@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ page import="beesControllers.beesLogIn" %> 
+
+<%@ page import="beesControllers.beesLogIn"%>
 
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<meta http-equiv="refresh" content="3;url=index.jsp" /> 
+<meta http-equiv="refresh" content="3;url=index.jsp" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -53,30 +53,36 @@
 	<%break;
 	}
 %>
-    
-    
-       <div class="container">
-        <br><br><br><br>
 
-				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="img/mainlogo.png" class="img-responsive">
-				</div>
-		    </div> <!-- /container -->
-		
-    
-   
-    <br>
-    <br>
-    <div style = "margin: auto auto">
-    	<div class="container theme-showcase" role="main">
 
-		<div class="alert alert-success text-center" role="alert"><big><b>Συνδεθήκατε επιτυχώς στο Busy Bees! Παρακαλώ περιμένετε... &nbsp</b></big>    
- 		<img src= "img/beeflying.gif" alt = "countdown timer" width="80">
- 		</div>		
-	
-		
-	
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<div class="col-lg-8 col-lg-offset-2 himg">
+			<img src="img/mainlogo.png" class="img-responsive">
+		</div>
 	</div>
-</div>
+	<!-- /container -->
+
+
+
+	<br>
+	<br>
+	<div style="margin: auto auto">
+		<div class="container theme-showcase" role="main">
+
+			<div class="alert alert-success text-center" role="alert">
+				<big><b>Συνδεθήκατε επιτυχώς στο Busy Bees! Παρακαλώ
+						περιμένετε... &nbsp</b></big> <img src="img/beeflying.gif"
+					alt="countdown timer" width="80">
+			</div>
+
+
+
+		</div>
+	</div>
 </body>
 </html>

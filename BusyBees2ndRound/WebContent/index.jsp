@@ -41,29 +41,34 @@
 	<%@ page import="beesControllers.beesLogIn"%>
 
 
-	<% switch(beesLogIn.loginValue) {
-		case 0: 
-		System.out.println("loged out"); %>
+	<%
+		switch (beesLogIn.loginValue) {
+			case 0 :
+				System.out.println("loged out");
+	%>
 	<%@ include file="navbar_login.jsp"%>
-	<%break;
-		case 1:
-			System.out.println("logedin provider"); %>
+	<%
+		break;
+			case 1 :
+				System.out.println("logedin provider");
+	%>
 	<%@ include file="navbar_provider.jsp"%>
-	<%break;
-		case 2:
-			System.out.println("logedin user"); %>
+	<%
+		break;
+			case 2 :
+				System.out.println("logedin user");
+	%>
 	<%@ include file="navbar_user.jsp"%>
-	<%break;
-	}
-%>
+	<%
+		break;
+		}
+	%>
 
 
 
 	<!-- *****************************************************************************************************************
 	 HEADERWRAP
 	 ***************************************************************************************************************** -->
-
-
 
 	<div class="container">
 		<br>
@@ -106,15 +111,18 @@
 							<div class="bg a0" data-animate="fadeIn">
 
 								<h3 class="a1" data-animate="fadeInDown">Εκπαιδευτικοι</h3>
-								<br> 
+								<br>
 
 								<form action="searchByCategory" method="post">
-								
-				<input type="hidden" name="category" value="Εκπαιδευτικός">
-							
-		<button type="submit" class="dmbutton a2" data-animate="fadeInUp" value="Submit"><i class="fa fa-search"></i> Αναζήτηση</button>
-									
-										
+
+									<input type="hidden" name="category" value="Εκπαιδευτικός">
+
+									<button type="submit" class="dmbutton a2"
+										data-animate="fadeInUp" value="Submit">
+										<i class="fa fa-search"></i> Αναζήτηση
+									</button>
+
+
 								</form>
 
 								<!-- <a href="resultsOfSearch.jsp" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Φιλόλογοι</a>
@@ -138,18 +146,20 @@
 						<div class="he-view">
 							<div class="bg a0" data-animate="fadeIn">
 								<h3 class="a1" data-animate="fadeInDown">Μαστορες</h3>
-								<br> 
-								
+								<br>
+
 								<form action="searchByCategory" method="post">
-								
-				<input type="hidden" name="category" value="Μάστορας">
-							
-		<button type="submit" class="dmbutton a2" data-animate="fadeInUp" value="Submit"><i class="fa fa-search"></i> Αναζήτηση</button>
-									
-										
+
+									<input type="hidden" name="category" value="Μάστορας">
+
+									<button type="submit" class="dmbutton a2"
+										data-animate="fadeInUp" value="Submit">
+										<i class="fa fa-search"></i> Αναζήτηση
+									</button>
+
+
 								</form>
-								
-							
+
 
 								<!--   <a href="....." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Ηλεκτρολόγοι</a>
                                 <a href="........." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Υδραυλικοί</a><br>
@@ -172,18 +182,21 @@
 						<div class="he-view">
 							<div class="bg a0" data-animate="fadeIn">
 								<h3 class="a1" data-animate="fadeInDown">Κομπιουτεραδες</h3>
-								<br> 
-								
-								
+								<br>
+
+
 								<form action="searchByCategory" method="post">
-								
-				<input type="hidden" name="category" value="Κομπιουτεράς">
-							
-		<button type="submit" class="dmbutton a2" data-animate="fadeInUp" value="Submit"><i class="fa fa-search"></i> Αναζήτηση</button>
-									
-										
+
+									<input type="hidden" name="category" value="Κομπιουτεράς">
+
+									<button type="submit" class="dmbutton a2"
+										data-animate="fadeInUp" value="Submit">
+										<i class="fa fa-search"></i> Αναζήτηση
+									</button>
+
+
 								</form>
-								
+
 
 								<!-- <a href="....." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Developers</a>
                         <a href="........." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Web Designers</a><br>
@@ -205,15 +218,18 @@
 						<div class="he-view">
 							<div class="bg a0" data-animate="fadeIn">
 								<h3 class="a1" data-animate="fadeInDown">Καλλιτεχνες</h3>
-								<br> 
-								
+								<br>
+
 								<form action="searchByCategory" method="post">
-								
-				<input type="hidden" name="category" value="Καλλιτέχνης">
-							
-		<button type="submit" class="dmbutton a2" data-animate="fadeInUp" value="Submit"><i class="fa fa-search"></i> Αναζήτηση</button>
-									
-										
+
+									<input type="hidden" name="category" value="Καλλιτέχνης">
+
+									<button type="submit" class="dmbutton a2"
+										data-animate="fadeInUp" value="Submit">
+										<i class="fa fa-search"></i> Αναζήτηση
+									</button>
+
+
 								</form>
 
 								<!--  <a href="....." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Μουσικοί</a>
@@ -238,18 +254,21 @@
 						<div class="he-view">
 							<div class="bg a0" data-animate="fadeIn">
 								<h3 class="a1" data-animate="fadeInDown">Γιατροι</h3>
-								<br> 
-								
-								
+								<br>
+
+
 								<form action="searchByCategory" method="post">
-								
-				<input type="hidden" name="category" value="Γιατρός">
-							
-		<button type="submit" class="dmbutton a2" data-animate="fadeInUp" value="Submit"><i class="fa fa-search"></i> Αναζήτηση</button>
-									
-										
+
+									<input type="hidden" name="category" value="Γιατρός">
+
+									<button type="submit" class="dmbutton a2"
+										data-animate="fadeInUp" value="Submit">
+										<i class="fa fa-search"></i> Αναζήτηση
+									</button>
+
+
 								</form>
-								
+
 								<!--  <a href="....." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Παθολόγοι</a>
                 <a href="........." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Γυναικολόγοι</a><br>
                 <a href="........." class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i> Οδοντίατροι</a>
@@ -428,28 +447,9 @@
 							</div>
 						</div>
 
-
-
-
-
-
-
-
-
-
-
-
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
 
 		</div>
 		<!--/panel-group-->
@@ -459,7 +459,6 @@
 	<!-- *****************************************************************************************************************
 	 CAROUSEL
 	 ***************************************************************************************************************** -->
-
 
 	<br>
 
@@ -479,13 +478,16 @@
 				<div class="item active">
 					<img src="img/carousel/carousel1.jpg" alt="carousel1">
 					<div class="carousel-caption">
-						<h5><b>Μαρίκα Κοροντογέρου, νοικοκυρά</b></h5>
+						<h5>
+							<b>Μαρίκα Κοροντογέρου, νοικοκυρά</b>
+						</h5>
 						<p style="text-shadow: 1px 1px black; color: white"
 							class="carouselfont">
-							<small>Μου είχε χαλάσει ο νιπτήρας. Έψαχνα για μέρες μέχρι να
-								βρω τον τέλειο υδραυλικό, αλλά μάταια. Με το Busy Bees έγιναν
-								όλα τόσο γρήγορα... Ένα τηλέφωνο και εντός μισής ώρας σκάει μύτη
-								στο μπάνιο μου, ο Σάκης ο Παίδαρος! Ευχαριστώ Busy Bees!</small>
+							<small>Μου είχε χαλάσει ο νιπτήρας. Έψαχνα για μέρες
+								μέχρι να βρω τον τέλειο υδραυλικό, αλλά μάταια. Με το Busy Bees
+								έγιναν όλα τόσο γρήγορα... Ένα τηλέφωνο και εντός μισής ώρας
+								σκάει μύτη στο μπάνιο μου, ο Σάκης ο Παίδαρος! Ευχαριστώ Busy
+								Bees!</small>
 						</p>
 					</div>
 				</div>
@@ -493,7 +495,9 @@
 				<div class="item">
 					<img src="img/carousel/carousel2.jpg" alt="carousel2">
 					<div class="carousel-caption">
-						<h5><b>Βασίλης Γκεϊτίδης, ταξιτζής</b></h5>
+						<h5>
+							<b>Βασίλης Γκεϊτίδης, ταξιτζής</b>
+						</h5>
 						<p style="text-shadow: 1px 1px white" class="carouselfont">
 							<small>Εκεί που χάζευα στο contra.γρ, μου πετάγεται ένα
 								παράθυρο και επέλεξα παντού "I Agree" και "Next, next, next" και
@@ -506,7 +510,9 @@
 				<div class="item">
 					<img src="img/carousel/carousel3.jpg" alt="carousel3">
 					<div class="carousel-caption">
-						<h5><b>Άγγελος Καλοκαρδόπουλος, εισοδηματίας</b></h5>
+						<h5>
+							<b>Άγγελος Καλοκαρδόπουλος, εισοδηματίας</b>
+						</h5>
 						<p style="text-shadow: 1px 1px black; color: white"
 							class="carouselfont">
 							<small>Είχα μία γιαγιά που κάθε βράδυ ροχάλιζε σαν
@@ -612,86 +618,84 @@
 
 
 	<script>
-// Portfolio
-(function($) {
-	"use strict";
-	var $container = $('.portfolio'),
-		$items = $container.find('.portfolio-item'),
-		portfolioLayout = 'fitRows';
+		// Portfolio
+		(function($) {
+			"use strict";
+			var $container = $('.portfolio'), $items = $container
+					.find('.portfolio-item'), portfolioLayout = 'fitRows';
 
-		if( $container.hasClass('portfolio-centered') ) {
-			portfolioLayout = 'masonry';
-		}
+			if ($container.hasClass('portfolio-centered')) {
+				portfolioLayout = 'masonry';
+			}
 
-		$container.isotope({
-			filter: '*',
-			animationEngine: 'best-available',
-			layoutMode: portfolioLayout,
-			animationOptions: {
-			duration: 750,
-			easing: 'linear',
-			queue: false
-		},
-		masonry: {
-		}
-		}, refreshWaypoints());
+			$container.isotope({
+				filter : '*',
+				animationEngine : 'best-available',
+				layoutMode : portfolioLayout,
+				animationOptions : {
+					duration : 750,
+					easing : 'linear',
+					queue : false
+				},
+				masonry : {}
+			}, refreshWaypoints());
 
-		function refreshWaypoints() {
-			setTimeout(function() {
-			}, 1000);
-		}
+			function refreshWaypoints() {
+				setTimeout(function() {
+				}, 1000);
+			}
 
-		$('nav.portfolio-filter ul a').on('click', function() {
+			$('nav.portfolio-filter ul a').on('click', function() {
 				var selector = $(this).attr('data-filter');
-				$container.isotope({ filter: selector }, refreshWaypoints());
+				$container.isotope({
+					filter : selector
+				}, refreshWaypoints());
 				$('nav.portfolio-filter ul a').removeClass('active');
 				$(this).addClass('active');
 				return false;
-		});
+			});
 
-		function getColumnNumber() {
-			var winWidth = $(window).width(),
-			columnNumber = 1;
+			function getColumnNumber() {
+				var winWidth = $(window).width(), columnNumber = 1;
 
-			if (winWidth > 1200) {
-				columnNumber = 5;
-			} else if (winWidth > 950) {
-				columnNumber = 4;
-			} else if (winWidth > 600) {
-				columnNumber = 3;
-			} else if (winWidth > 400) {
-				columnNumber = 2;
-			} else if (winWidth > 250) {
-				columnNumber = 1;
-			}
+				if (winWidth > 1200) {
+					columnNumber = 5;
+				} else if (winWidth > 950) {
+					columnNumber = 4;
+				} else if (winWidth > 600) {
+					columnNumber = 3;
+				} else if (winWidth > 400) {
+					columnNumber = 2;
+				} else if (winWidth > 250) {
+					columnNumber = 1;
+				}
 				return columnNumber;
 			}
 
 			function setColumns() {
-				var winWidth = $(window).width(),
-				columnNumber = getColumnNumber(),
-				itemWidth = Math.floor(winWidth / columnNumber);
+				var winWidth = $(window).width(), columnNumber = getColumnNumber(), itemWidth = Math
+						.floor(winWidth / columnNumber);
 
 				$container.find('.portfolio-item').each(function() {
-					$(this).css( {
-					width : itemWidth + 'px'
+					$(this).css({
+						width : itemWidth + 'px'
+					});
 				});
+			}
+
+			function setPortfolio() {
+				setColumns();
+				$container.isotope('reLayout');
+			}
+
+			$container.imagesLoaded(function() {
+				setPortfolio();
 			});
-		}
 
-		function setPortfolio() {
-			setColumns();
-			$container.isotope('reLayout');
-		}
-
-		$container.imagesLoaded(function () {
-			setPortfolio();
-		});
-
-		$(window).on('resize', function () {
-		setPortfolio();
-	});
-})(jQuery);
-</script>
+			$(window).on('resize', function() {
+				setPortfolio();
+			});
+		})(jQuery);
+	</script>
 </body>
 </html>

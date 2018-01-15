@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ page import="beesControllers.beesLogIn" %> 
+
+<%@ page import="beesControllers.beesLogIn"%>
 
 
 <!DOCTYPE html>
@@ -33,52 +33,58 @@
 <body>
 
 
- <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.jsp">Busy Bees</a>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.jsp">Busy Bees</a>
 
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">ΑΡΧΙΚΗ</a></li>
-            <li><a href="index.jsp#faq">FAQ</a></li>
-            <li><a href="#footerwrap">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
-            <li>  <a><span class="glyphicon glyphicon-user" aria-hidden="true"> LOGIN</a></span></li>
-
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    
-    
-       <div class="container">
-        <br><br><br><br>
-
-				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="img/mainlogo.png" class="img-responsive">
-				</div>
-		    </div> <!-- /container -->
-    
-    
-    <br>
-    <br>
-    <br>
-    <div style = "margin: auto auto">
-    	<div class="container theme-showcase" role="main">
-
-		<div class="alert alert-success text-center" role="alert"><big><b>Εγγραφτήκατε επιτυχώς στο Busy Bees! Παρακαλώ περιμένετε καθώς πραγματοποιείται η είσοδος...&nbsp</b></big>
-		<img src= "img/beeflying.gif" alt = "countdown timer" width="80">
-		</div>		
-	
+			</div>
+			<div class="navbar-collapse collapse navbar-right">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.jsp">ΑΡΧΙΚΗ</a></li>
+					<li><a href="index.jsp#faq">FAQ</a></li>
+					<li><a href="#footerwrap">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+					<li><a><span class="glyphicon glyphicon-user"
+							aria-hidden="true"> LOGIN</a></span></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
 	</div>
-</div>
+
+
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<div class="col-lg-8 col-lg-offset-2 himg">
+			<img src="img/mainlogo.png" class="img-responsive">
+		</div>
+	</div>
+	<!-- /container -->
+
+
+	<br>
+	<br>
+	<br>
+	<div style="margin: auto auto">
+		<div class="container theme-showcase" role="main">
+
+			<div class="alert alert-success text-center" role="alert">
+				<big><b>Εγγραφτήκατε επιτυχώς στο Busy Bees! Παρακαλώ
+						περιμένετε καθώς πραγματοποιείται η είσοδος...&nbsp</b></big> <img
+					src="img/beeflying.gif" alt="countdown timer" width="80">
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

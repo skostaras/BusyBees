@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ page import="beesControllers.beesLogIn" %> 
+
+<%@ page import="beesControllers.beesLogIn"%>
 
 
 <!DOCTYPE html>
@@ -53,29 +53,35 @@
 	<%break;
 	}
 %>
-    
-    
-       <div class="container">
-        <br><br><br><br>
 
-				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="img/mainlogo.png" class="img-responsive">
-				</div>
-		    </div> <!-- /container -->
-    
-    
-    <br>
-    <br>
-    <br>
-    <div style = "margin: auto auto">
-    	<div class="container theme-showcase" role="main">
 
-		<div class="alert alert-success text-center" role="alert"><big><b>Τα στοιχεία σας καταχωρήθηκαν επιτυχώς! Παρακαλώ περιμένετε...&nbsp</b></big>
-		 		<img src= "img/beeflying.gif" alt = "countdown timer" width="80">
-		
-		</div>		
-	
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<div class="col-lg-8 col-lg-offset-2 himg">
+			<img src="img/mainlogo.png" class="img-responsive">
+		</div>
 	</div>
-</div>
+	<!-- /container -->
+
+
+	<br>
+	<br>
+	<br>
+	<div style="margin: auto auto">
+		<div class="container theme-showcase" role="main">
+
+			<div class="alert alert-success text-center" role="alert">
+				<big><b>Τα στοιχεία σας καταχωρήθηκαν επιτυχώς! Παρακαλώ
+						περιμένετε...&nbsp</b></big> <img src="img/beeflying.gif"
+					alt="countdown timer" width="80">
+
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>
