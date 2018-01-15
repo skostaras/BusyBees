@@ -2,8 +2,6 @@ package beesControllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +21,7 @@ import beesJava.Provider;
 public class beesSignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public beesSignUp() {// genikos constractoras
+	public beesSignUp() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -32,196 +30,112 @@ public class beesSignUp extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html; charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        request.setCharacterEncoding("UTF-8");// gia ellinika
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		PrintWriter writer = response.getWriter();
-	
 
-
-		// anoigoi xoro gia antikimena username ,email, paswword)
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String userCategory = request.getParameter("userCategory");
-		
 
 		RequestDispatcher rd2 = request.getRequestDispatcher("/signupsuccess.jsp");
-																		
-		RequestDispatcher rd3 = request.getRequestDispatcher("/error.jsp"); 
+		RequestDispatcher rd3 = request.getRequestDispatcher("/error.jsp");
 
-		
-		if (password.length()<6){
-			request.setAttribute("shortpsw", "Το psw πρέπει να είναι τουλάχιστον 6 χαρακτήρες");
+		if (password.length() < 6) {
+			request.setAttribute("shortpsw",
+					"Î¤Î¿ psw Ï€Ï�Î­Ï€ÎµÎ¹ Î½Î± ÎµÎ¯Î½Î±Î¹ Ï„Î¿Ï…Î»Î¬Ï‡Î¹ÏƒÏ„Î¿Î½ 6 Ï‡Î±Ï�Î±ÎºÏ„Î®Ï�ÎµÏ‚");
 			rd3.forward(request, response);
 			return;
-			
 		}
-	
-		
-		// Episkeptis-------------------------------------------------------------------------------------------
-		if (userCategory.equals("1")) {// elegxei ean to radio buton einai true kai
-									// ektelei ola ta parakato
-			// --------------------------------------------------------------------------------------------
 
+		// User -----------------------------------------------------------------
+		if (userCategory.equals("1")) {
 
-			CustomerDAO cdao = new CustomerDAO(); // dimioyrgoyme ena antikimeno
-													// ths klasis CustomerDAO
-			Customer customerinfo = null; // dimioyrgei ena antikeimeno tis
-											// klasis User
-			
-			
-			
-			// -----------------------------------------------------------------------------------------------------------------------------------------
+			CustomerDAO cdao = new CustomerDAO();
+			Customer customerinfo = null;
 
 			try {
 
+				int customeremailflag = cdao.checkCustomerSignUp(email);
 
-				int customeremailflag = cdao.checkCustomerSignUp(email); // kali
-																			// thn
-																			// methodo
-																	// getSignupSameUsers...to
-																			// antikimeno
-																			// resultlist
-																			// dexete
-																			// tin
-																			// timi
+				if (customeremailflag > 0) {
 
-				if (customeremailflag > 0) { // elenxei ean to antikimeno
-												// resultlist
-												// kai elegnei an eina
-												// megalitero
-												// toy midenos arra o xristeis
-												// den
-												// eixei grapsi kati opote einai
-												// lathos
-					request.setAttribute("customeremailexists", "Το email υπάρχει.");
-					rd3.forward(request, response); // stelnei ton xristi sthn
-													// login
+					request.setAttribute("customeremailexists", "Î¤Î¿ email Ï…Ï€Î¬Ï�Ï‡ÎµÎ¹.");
+					rd3.forward(request, response);
+
 				} else {
 
-
 					customerinfo = new Customer(username, password, email);
-					cdao.saveCustomer(customerinfo);// kalei thn saveUser methodo gia
-												// na apothikeysei tis
-												// plirofories poy dexete apo to
-												// antikimeno customerinfo kai ta apothikeyei se ena antikimeno udao
-					
-					
-					/**** Gia automato login *******/
+					cdao.saveCustomer(customerinfo);
+
+					/**** for auto login *******/
 					HttpSession session = request.getSession(true);
 					Customer customer = null;
 					customer = cdao.checkCustomerLogIn(password, email);
 					session.setAttribute("customer-object", customer);
-					
 					/**************/
-					
+
 					request.setAttribute("successmessage", "...");
-					rd2.forward(request, response); // stelnei ton xristi sthn
-													// index
+					rd2.forward(request, response);
+
 				}
 
 			} catch (Exception e) {
-				
+
 				writer.println(e.getMessage());
-
-				//request.setAttribute("messageerror", "<b>ωχ!! μας φάγανε </b><br>" + e.getMessage());// typonei
-
-				//rd.forward(request, response);// stelnei ton xristi sthn
-												// erropage
+				// request.setAttribute("messageerror", "<b>Ï‰Ï‡!! Î¼Î±Ï‚ Ï†Î¬Î³Î±Î½Îµ </b><br>"
+				// + e.getMessage());
+				// rd.forward(request, response);
 				return;
 
 			}
 		}
-		
-	
 
-		// Epagelmatia--------------------------------------------------------------------------------------------
-		if (userCategory.equals("2")) {// elegxei ean to radio buton einai true kai
-									   // ektelei ola ta parakato
-			// --------------------------------------------------------------------------------------------
-			ProviderDAO pdao = new ProviderDAO(); // dimioyrgoyme ena antikimeno
-													// ths klasis CustomerDAO
-			Provider providerinfo = null; // dimioyrgei ena antikeimeno tis
-											// klasis User
+		// Provider--------------------------------------------------------------------------------------------
+		if (userCategory.equals("2")) {
 
-			// -----------------------------------------------------------------------------------------------------------------------------------------
+			ProviderDAO pdao = new ProviderDAO();
+			Provider providerinfo = null;
 
 			try {
-				
 
-				int provideremailflag = pdao.checkProviderSignUp(email); // kali
-																			// thn
-																			// methodo
-																	// getSignupSameUsers...to
-																			// antikimeno
-																			// resultlist
-																			// dexete
-																			// tin
-																			// timi
+				int provideremailflag = pdao.checkProviderSignUp(email);
 
-				if (provideremailflag > 0) { // elenxei ean to antikimeno
-												// resultlist
-												// kai elegnei an eina
-												// megalitero
-												// toy midenos arra o xristeis
-												// den
-												// eixei grapsi kati opote einai
-												// lathos
-					request.setAttribute("provideremailexists", "Το email υπάρχει.");
-					rd3.forward(request, response); // stelnei ton xristi sthn
-													// login
+				if (provideremailflag > 0) {
+
+					request.setAttribute("provideremailexists", "Î¤Î¿ email Ï…Ï€Î¬Ï�Ï‡ÎµÎ¹.");
+					rd3.forward(request, response);
+
 				} else {
-//					writer.println("doylepseeee");
 
 					providerinfo = new Provider(username, password, email);
-					pdao.saveProvider(providerinfo);// kalei thn saveUser methodo gia
-												// na apothikeysei tis
-												// plirofories poy dexete apo to
-												// antikimeno customerinfo kai ta apothikeyei se ena antikimeno udao
-					
-					
-					
-					
-					
-					/**** Gia automato login *******/
+					pdao.saveProvider(providerinfo);
+
+					/**** for auto login *******/
 					HttpSession session = request.getSession(true);
 					Provider provider = null;
 					provider = pdao.checkProviderLogIn(password, email);
 					session.setAttribute("provider-object", provider);
-					
 					/**************/
-					
-					
-					
-					
-					
-					request.setAttribute("successmessage", "Κάνε μπιζζζζζζ είσαι πλέον μέλισσα");
-					rd2.forward(request, response); // stelnei ton xristi sthn
-													// index
+
+					request.setAttribute("successmessage",
+							"ÎšÎ¬Î½Îµ Î¼Ï€Î¹Î¶Î¶Î¶Î¶Î¶Î¶ ÎµÎ¯ÏƒÎ±Î¹ Ï€Î»Î­Î¿Î½ Î¼Î­Î»Î¹ÏƒÏƒÎ±");
+					rd2.forward(request, response);
+
 				}
 
 			} catch (Exception e) {
-				
+
 				writer.println(e.getMessage());
-
-				//request.setAttribute("messageerror", "<b>ωχ!! μας φάγανε </b><br>" + e.getMessage());// typonei
-				// sth
-				// error
-				// page
-				// to
-				// sfalma
-				// poy
-				// grapsame
-
-				//rd.forward(request, response);// stelnei ton xristi sthn
-												// erropage
+				// request.setAttribute("messageerror", "<b>Ï‰Ï‡!! Î¼Î±Ï‚ Ï†Î¬Î³Î±Î½Îµ </b><br>"
+				// + e.getMessage());
+				// rd.forward(request, response);
 				return;
 
 			}
 		}
-		// edo telionei to if toy
-			// episkepti-----------------------------------------------------------------------------------------------------------------------------
-	return;
+		return;
 
 	}
 

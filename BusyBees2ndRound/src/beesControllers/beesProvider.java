@@ -26,9 +26,9 @@ public class beesProvider extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=UTF-8"); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SOS
-		response.setCharacterEncoding("UTF-8"); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SOS
-		request.setCharacterEncoding("UTF-8");// gia ellinika
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 		String workemail = request.getParameter("workemail");
 		String firstName = request.getParameter("firstName");
@@ -48,57 +48,48 @@ public class beesProvider extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/submitFormSuccess.jsp");
 		RequestDispatcher rd3 = request.getRequestDispatcher("/apperror.jsp");
 
-		
-		
-		
-		// ---------------------------------------------------------------------------------------------------------------------------
+		HttpSession session = request.getSession(true);
 
-		HttpSession session = request.getSession(true); // pernei oles tis egrafes se cookys katholh thn diarkia poy einai o user sto site
-		Provider provider = (Provider) session.getAttribute("provider-object"); // apothikeyei ena sto antikimeno provider ths Provider
-      if(provider!=null){  int idprovider=provider.getIdprovider(); // pernoyme apo tis tri parametrous email Password ktl pernoyme mono to idprovider 
-        //--------------------------------------------------------------------------------------------------------------------------
-        
-//Den eimai sigouros an leitourgei to parakato afou mporo kai kataxoro misa dedomena
-        
-		if (workemail == null || firstName == null || lastName == null || phone == null || webpage == null
-				|| address == null || pc == null || city == null || description == null
-				 || type == null || category == null || subcategory == null || service == null) {
+		Provider provider = (Provider) session.getAttribute("provider-object");
 
-			request.setAttribute("errormessage", "Not valid data!");
-			rd3.forward(request, response);
+		if (provider != null) {
+			int idprovider = provider.getIdprovider();
 
-		}
-		// telos tis doPost fernei ta dedomena apo tis jsp
-		// selides++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+			// Den eimai sigouros an leitourgei to parakato afou mporo kai kataxoro misa
+			// dedomena
 
-		try {
-			Provider_jobDAO pjobdao = new Provider_jobDAO(); // dimioyrgei ena antikeimeno  tis klasis Provider_jobDAO
-			Provider_job provider_jobinfo = null; // dimioyrgei ena antikeimeno tis klasis Provider_job		
-			
-			
-			provider_jobinfo = new Provider_job( workemail,  firstName,  lastName,  phone,  webpage,
-					 address,   pc,  city,  description,  price,
-					 type,  category,  subcategory,  service);
+			if (workemail == null || firstName == null || lastName == null || phone == null || webpage == null
+					|| address == null || pc == null || city == null || description == null || type == null
+					|| category == null || subcategory == null || service == null) {
 
-			
-			
-			pjobdao.saveProvider_job(provider_jobinfo, idprovider); // store provider_jobinfo to database sthn klasi DAO
-			request.setAttribute("successmessage", "Registration completed successfully!");
-			rd.forward(request, response);
+				request.setAttribute("errormessage", "Not valid data!");
+				rd3.forward(request, response);
 
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			request.setAttribute("errormessage", e.getMessage());
+			}
 
-			PrintWriter out = response.getWriter();
-			out.println(e.getMessage());
-			
-        
-			return;
-		}
-      }
-      else System.out.println("no id");
+			try {
+				Provider_jobDAO pjobdao = new Provider_jobDAO();
+
+				Provider_job provider_jobinfo = null;
+
+				provider_jobinfo = new Provider_job(workemail, firstName, lastName, phone, webpage, address, pc, city,
+						description, price, type, category, subcategory, service);
+
+				pjobdao.saveProvider_job(provider_jobinfo, idprovider);
+
+				request.setAttribute("successmessage", "Registration completed successfully!");
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				request.setAttribute("errormessage", e.getMessage());
+				PrintWriter out = response.getWriter();
+				out.println(e.getMessage());
+
+				return;
+			}
+		} else
+			System.out.println("no id");
 
 	}
 
