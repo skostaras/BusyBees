@@ -55,11 +55,8 @@ public class beesLogIn extends HttpServlet {
 			customer = cdao.checkCustomerLogIn(password, email);
 			session.setAttribute("customer-object", customer);
 			rdSuccess.forward(request, response);	
-	
-		} 
-
-		catch (Exception e) {
 			
+		} catch (Exception e) {
 			
 			try {
 
@@ -67,8 +64,8 @@ public class beesLogIn extends HttpServlet {
 				session.setAttribute("provider-object", provider);
 				rdSuccess.forward(request, response);
 				
-			}
-			catch (Exception e2) {
+				
+			} catch (Exception e2) {
 				request.setAttribute("messageerror", e2.getMessage());
 				System.out.println("provider login not found");
 				rdFail.forward(request, response);
@@ -78,15 +75,9 @@ public class beesLogIn extends HttpServlet {
 			request.setAttribute("messageerror", e.getMessage());
 			System.out.println("customer login not found");
 			rdFail.forward(request, response);
-			
+	
 		}			
 			
-			
-			
-		
-				
-			
-		
 		return;
 
 	}//doPost
