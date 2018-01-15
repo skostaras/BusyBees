@@ -7,7 +7,7 @@
 3) Run BusyBeesDB1.0.sql 
 4) Update the bees.connection.DB class with your Database's credentials
 5) Run on server (Tomcat or other)
-
+6) It should be live at http://localhost:8080/BusyBees/index.jsp
 
 **Screenshots** from the platform on the below link:
 
