@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/stefanos/eclipse/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/s.kostaras/Documents/Eclipse Add-ons/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
