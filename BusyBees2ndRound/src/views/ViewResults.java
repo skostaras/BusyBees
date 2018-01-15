@@ -12,14 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import beesControllers.beesLogIn;
 import beesJava.Provider_job;
 
-
-
 @WebServlet("/viewresults")
 public class ViewResults extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 	int i = 0;
 
-	
 	public ViewResults() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -35,7 +33,6 @@ public class ViewResults extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -44,11 +41,11 @@ public class ViewResults extends HttpServlet {
 		ArrayList<Provider_job> resultlist = (ArrayList<Provider_job>) request.getAttribute("provider-list");
 
 		PrintWriter out = new PrintWriter(response.getWriter());
-		
-		
+
 		/*********** HEADER *********/
 
-		out.println("<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>");
+		out.println(
+				"<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>");
 		out.println("<html lang='en'>");
 		out.println("  <head>");
 		out.println("    <meta charset='utf-8'>");
@@ -63,42 +60,37 @@ public class ViewResults extends HttpServlet {
 		out.println("    <link href='css/font-awesome.min.css' rel='stylesheet'>");
 		out.println("  </head>");
 		out.println("  <body>");
-		
-	switch(beesLogIn.loginValue) {
-		case 0: 
-		System.out.println("loged out"); 
-		
-		request.getRequestDispatcher("/navbar_login.jsp").include(request, response);
 
-	break;
+		switch (beesLogIn.loginValue) {
+		case 0:
+			System.out.println("loged out");
+
+			request.getRequestDispatcher("/navbar_login.jsp").include(request, response);
+
+			break;
 		case 1:
-		System.out.println("logedin provider");
-		
-		request.getRequestDispatcher("/navbar_provider.jsp").include(request, response);	
-		
-	break;
+			System.out.println("logedin provider");
+
+			request.getRequestDispatcher("/navbar_provider.jsp").include(request, response);
+
+			break;
 		case 2:
-		System.out.println("logedin user"); 
+			System.out.println("logedin user");
 
-		request.getRequestDispatcher("/navbar_user.jsp").include(request, response);
-		
-		break;
-	}
+			request.getRequestDispatcher("/navbar_user.jsp").include(request, response);
 
-		
-		
-		out.println("<div class='container mtb'>"); //κλείνει στο τέλος πριν το footer
+			break;
+		}
+
+		out.println("<div class='container mtb'>"); // κλείνει στο τέλος πριν το footer
 		out.println("");
-		out.println("   <div class='row'>"); //κλείνει στο τέλος πριν το footer
-		
+		out.println("   <div class='row'>"); // κλείνει στο τέλος πριν το footer
+
 		request.getRequestDispatcher("/searchFilters.jsp").include(request, response);
 
-
-		
 		out.println("");
 		out.println("        <div class='col-lg-9 centered'>");
-		
-		
+
 		out.println("<h2 style = 'color:#ffb726'>Αποτελέσματα Αναζήτησης</h2>");
 		out.println("	 			<div class='hline'></div>");
 
@@ -108,307 +100,304 @@ public class ViewResults extends HttpServlet {
 		out.println("				placeholder='Νέα Αναζήτηση...'>");
 		out.println("		</form>");
 
-		
 		if (resultlist != null && resultlist.size() > 0) {
-			
-			if(resultlist.size() == 1) {
-				out.println("        	<p><i><big>Βρέθηκε <b><span style = 'color: #fc7835'>1</span></b> αποτέλεσμα.</big></i></p>");
-	
-			}else {	
-			
-			out.println("        	<p><i><big>Βρέθηκαν <b><span style = 'color: #fc7835'>" + resultlist.size() + "</span></b> αποτελέσματα.</big></i></p>");
+
+			if (resultlist.size() == 1) {
+				out.println(
+						"        	<p><i><big>Βρέθηκε <b><span style = 'color: #fc7835'>1</span></b> αποτέλεσμα.</big></i></p>");
+
+			} else {
+
+				out.println("        	<p><i><big>Βρέθηκαν <b><span style = 'color: #fc7835'>" + resultlist.size()
+						+ "</span></b> αποτελέσματα.</big></i></p>");
 			}
 			out.println("      <div class = 'scrollable row'>");
 		}
-		
-		
-		if (resultlist == null || resultlist.size() == 0) {
-			
-			if(request.getParameter("searchButton") == null) {
-				
-				out.println("        	<p><i><big>Δεν βρέθηκαν αποτελέσματα. </big></i></p>");
-				
-			}else{
-			
-				out.println("        	<p><i><big>Δεν βρέθηκαν αποτελέσματα για το '" + request.getParameter("searchButton") + "'</big></i></p>");
-			}
-			
-			
 
-			
+		if (resultlist == null || resultlist.size() == 0) {
+
+			if (request.getParameter("searchButton") == null) {
+
+				out.println("        	<p><i><big>Δεν βρέθηκαν αποτελέσματα. </big></i></p>");
+
+			} else {
+
+				out.println("        	<p><i><big>Δεν βρέθηκαν αποτελέσματα για το '"
+						+ request.getParameter("searchButton") + "'</big></i></p>");
+			}
 
 		} else {
 
-			for (Provider_job pjob : resultlist) {		
-				
-				
-				
-		out.println("        <br>");
-		
-	
-		out.println("<div class = 'container col-lg-9 col-lg-offset-1'>");
-		out.println("<div class='row well displayProfiles '>");
-		out.println("     <div class='col-lg-12 col-sm-12'>");
-		out.println("      <div class='card'>");
-		out.println("        <div class='avatar'>");
-		
-		
-			
-		/*switch(pjob.getCategory()) {
-			case "Γιατρός": 
+			for (Provider_job pjob : resultlist) {
 
-				out.println("          <img  src='img/portfolio/doc3.jpg' alt='image'>");
+				out.println("        <br>");
 
-				break;
-			
-			case "Εκπαιδευτικός":
-			
-				out.println("          <img  src='img/portfolio/teacher1.jpg' alt='image'>");
-			
-				break;
-				
-			case "Καλλιτέχνης":
+				out.println("<div class = 'container col-lg-9 col-lg-offset-1'>");
+				out.println("<div class='row well displayProfiles '>");
+				out.println("     <div class='col-lg-12 col-sm-12'>");
+				out.println("      <div class='card'>");
+				out.println("        <div class='avatar'>");
 
-				out.println("          <img  src='img/portfolio/musician1.jpg' alt='image'>");
-			
-				break;
-				
-			case "Κομπιουτεράς":
+				/*
+				 * switch(pjob.getCategory()) { case "Γιατρός":
+				 * 
+				 * out.println("          <img  src='img/portfolio/doc3.jpg' alt='image'>");
+				 * 
+				 * break;
+				 * 
+				 * case "Εκπαιδευτικός":
+				 * 
+				 * out.println("          <img  src='img/portfolio/teacher1.jpg' alt='image'>");
+				 * 
+				 * break;
+				 * 
+				 * case "Καλλιτέχνης":
+				 * 
+				 * out.println("          <img  src='img/portfolio/musician1.jpg' alt='image'>"
+				 * );
+				 * 
+				 * break;
+				 * 
+				 * case "Κομπιουτεράς":
+				 * 
+				 * out.
+				 * println("          <img  src='img/portfolio/programmer2.jpg' alt='image'>");
+				 * 
+				 * break;
+				 * 
+				 * case "Μάστορας":
+				 * 
+				 * out.println("          <img  src='img/portfolio/worker3.jpg' alt='image'>");
+				 * 
+				 * break; }
+				 */
 
-				out.println("          <img  src='img/portfolio/programmer2.jpg' alt='image'>");
+				switch (pjob.getSubcategory()) {
+				case "Φιλόλογος":
 
-				break;
-				
-			case "Μάστορας":
+					out.println("          <img  src='img/generic/teachers/teacher1.jpg' alt='image'>");
 
-				out.println("          <img  src='img/portfolio/worker3.jpg' alt='image'>");
+					break;
 
-				break;
-		}*/
-		
-		switch(pjob.getSubcategory()) {
-		case "Φιλόλογος": 
+				case "Δάσκαλος":
 
-			out.println("          <img  src='img/generic/teachers/teacher1.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/teachers/teacher3.jpg' alt='image'>");
 
-			break;
-		
-		case "Δάσκαλος":
-		
-			out.println("          <img  src='img/generic/teachers/teacher3.jpg' alt='image'>");
-		
-			break;
-			
-		case "Μαθηματικός":
+					break;
 
-			out.println("          <img  src='img/generic/teachers/teacher4.jpg' alt='image'>");
-		
-			break;
-			
-		case "Φυσικός":
+				case "Μαθηματικός":
 
-			out.println("          <img  src='img/generic/teachers/teacher2.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/teachers/teacher4.jpg' alt='image'>");
 
-			break;
-			
-		case "Ηλεκτρολόγος":
+					break;
 
-			out.println("          <img  src='img/generic/workers/el.jpg' alt='image'>");
+				case "Φυσικός":
 
-			break;
-			
-		case "Υδραυλικός":
+					out.println("          <img  src='img/generic/teachers/teacher2.jpg' alt='image'>");
 
-			out.println("          <img  src='img/generic/workers/pl.jpg' alt='image'>");
+					break;
 
-			break;
-			
-		case "Ελαιοχρωματιστής":
+				case "Ηλεκτρολόγος":
 
-			out.println("          <img  src='img/generic/workers/painter.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/workers/el.jpg' alt='image'>");
 
-			break;
-			
-		case "Ξυλουργός":
+					break;
 
-			out.println("          <img  src='img/generic/workers/car.jpg' alt='image'>");
+				case "Υδραυλικός":
 
-			break;
-			
-		case "Developer":
+					out.println("          <img  src='img/generic/workers/pl.jpg' alt='image'>");
 
-			out.println("          <img  src='img/generic/programmers/developer.jpg' alt='image'>");
+					break;
 
-			break;
-			
-		case "Web Designer":
+				case "Ελαιοχρωματιστής":
 
-			out.println("          <img  src='img/generic/programmers/designer.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/workers/painter.jpg' alt='image'>");
 
-			break;
-			
-		case "Windows Expert":
+					break;
 
-			out.println("          <img  src='img/generic/programmers/windows.jpg' alt='image'>");
+				case "Ξυλουργός":
 
-			break;
-			
-		case "Τεχνικός Δικτύων":
+					out.println("          <img  src='img/generic/workers/car.jpg' alt='image'>");
 
-			out.println("          <img  src='img/generic/programmers/diktion.jpg' alt='image'>");
+					break;
 
-			break;
-			
-		case "Μουσικός":
+				case "Developer":
 
-			out.println("          <img  src='img/generic/artists/music.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/programmers/developer.jpg' alt='image'>");
 
-			break;
-			
-		case "Κλόουν":
+					break;
 
-			out.println("          <img  src='img/generic/artists/clown.jpg' alt='image'>");
+				case "Web Designer":
 
-			break;
-			
-		case "Ηθοποιός":
+					out.println("          <img  src='img/generic/programmers/designer.jpg' alt='image'>");
 
-			out.println("          <img  src='img/generic/artists/actor.jpg' alt='image'>");
+					break;
 
-			break;
-			
-		case "Τραγουδιστής":
+				case "Windows Expert":
 
-			out.println("          <img  src='img/generic/artists/singer.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/programmers/windows.jpg' alt='image'>");
 
-			break;
-			
-		case "Παθολόγος":
+					break;
 
-			out.println("          <img  src='img/generic/doctors/path.jpg' alt='image'>");
+				case "Τεχνικός Δικτύων":
 
-			break;
-			
-		case "Γυναικολόγος":
+					out.println("          <img  src='img/generic/programmers/diktion.jpg' alt='image'>");
 
-			out.println("          <img  src='img/generic/doctors/wooman.jpg' alt='image'>");
+					break;
 
-			break;
-			
-		case "Οδοντίατρος":
+				case "Μουσικός":
 
-			out.println("          <img  src='img/generic/doctors/teeth.jpg' alt='image'>");
+					out.println("          <img  src='img/generic/artists/music.jpg' alt='image'>");
 
-			break;
-			
-		case "Οφθαλμίατρος":
+					break;
 
-			out.println("          <img  src='img/generic/doctors/eye.jpg' alt='image'>");
+				case "Κλόουν":
 
-			break;
-	}
-			
-		
-		
-		out.println("        </div>");
-		out.println("        <div>");
-		out.println("");
-		out.println("          <p class='priceInfo'><span id = 'price'>" + pjob.getPrice() + "</span><span>&nbsp&euro;</span></p>");
-		out.println("          <p class='servicekindinfo'><span id='servicekind'>"+ pjob.getType() +"</span></p>");
-		out.println("");
-		out.println("");
-		out.println("        </div>");
-		out.println("");
-		out.println("        <div class = 'container'>");
-		out.println("        <div class='content col-md-3'>");
-		out.println("          <p> <span class='personName' id = 'fullname'>"+ pjob.getLastName() + " " + pjob.getFirstName() +"</span>");
-		out.println("            <span>&nbsp</span>");
-		out.println("");
-		out.println("          <span class='profInfo' id='type' style = 'font-weight:bold'>"+ pjob.getSubcategory() +"</span></p>");
-		out.println("");
-		out.println("");
-		out.println("          <p class='profInfo' id='service1'>"+ pjob.getService() +"</p>");
-		out.println("          <p class='profInfo' id='serviceDescr'>"+ pjob.getDescription() +"</p>");
-		out.println("         </div>");
-		out.println("");
-		out.println("      </div>");
-		out.println("");
-		out.println("         <a data-toggle='collapse' data-target='#collapseExampleDong"+i+"' aria-expanded='false' aria-controls='collapseExample'>");
-		out.println("         <div class='arrow'>");
-		out.println("            <i class='fa fa-chevron-down' aria-hidden='true'></i>");
-		out.println("        </div>");
-		out.println("        </a>");
-		out.println("        <div class='collapse' id='collapseExampleDong"+i+"'>");
-		out.println("          <div class='card card-block'>");
-		out.println("            <table class='table table-user-information'>");
-		out.println("              <tbody>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>Τηλέφωνο:</td>");
-		out.println("                  <td id='tel'>"+ pjob.getPhone() +"</td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>Πόλη:</td>");
-		out.println("                  <td id='city'>"+ pjob.getCity() +"</td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>Διεύθυνση:</td>");
-		out.println("                  <td id='address'>"+ pjob.getAddress() +"</td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>ΤΚ:</td>");
-		out.println("                  <td id='tk'>"+ pjob.getPc() +"</td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>e-mail:</td>");
-		out.println("                  <td id='email'><a href='mailto:"+ pjob.getWorkemail() +"'>"+ pjob.getWorkemail() +"</a></td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("                <tr>");
-		out.println("                  <td>Ιστοσελίδα:</td>");
-		out.println("                  <td id='url'><a href='"+ pjob.getWebpage() +"'>"+ pjob.getWebpage() +"</a></td>");
-		out.println("                </tr>");
-		out.println("");
-		out.println("              </tbody>");
-		out.println("            </table>");
-		out.println("");
-		out.println("          </div>");
-		out.println("        </div>");
-		out.println("      </div>");
-		out.println("</div>");
-		out.println("    </div>");
-		out.println("</div>");
-		
-		i++;
+					out.println("          <img  src='img/generic/artists/clown.jpg' alt='image'>");
 
+					break;
 
-			
-			}//for
+				case "Ηθοποιός":
 
-			
+					out.println("          <img  src='img/generic/artists/actor.jpg' alt='image'>");
 
-		}//else
-		
+					break;
+
+				case "Τραγουδιστής":
+
+					out.println("          <img  src='img/generic/artists/singer.jpg' alt='image'>");
+
+					break;
+
+				case "Παθολόγος":
+
+					out.println("          <img  src='img/generic/doctors/path.jpg' alt='image'>");
+
+					break;
+
+				case "Γυναικολόγος":
+
+					out.println("          <img  src='img/generic/doctors/wooman.jpg' alt='image'>");
+
+					break;
+
+				case "Οδοντίατρος":
+
+					out.println("          <img  src='img/generic/doctors/teeth.jpg' alt='image'>");
+
+					break;
+
+				case "Οφθαλμίατρος":
+
+					out.println("          <img  src='img/generic/doctors/eye.jpg' alt='image'>");
+
+					break;
+				}
+
+				out.println("        </div>");
+				out.println("        <div>");
+				out.println("");
+				out.println("          <p class='priceInfo'><span id = 'price'>" + pjob.getPrice()
+						+ "</span><span>&nbsp&euro;</span></p>");
+				out.println("          <p class='servicekindinfo'><span id='servicekind'>" + pjob.getType()
+						+ "</span></p>");
+				out.println("");
+				out.println("");
+				out.println("        </div>");
+				out.println("");
+				out.println("        <div class = 'container'>");
+				out.println("        <div class='content col-md-3'>");
+				out.println("          <p> <span class='personName' id = 'fullname'>" + pjob.getLastName() + " "
+						+ pjob.getFirstName() + "</span>");
+				out.println("            <span>&nbsp</span>");
+				out.println("");
+				out.println("          <span class='profInfo' id='type' style = 'font-weight:bold'>"
+						+ pjob.getSubcategory() + "</span></p>");
+				out.println("");
+				out.println("");
+				out.println("          <p class='profInfo' id='service1'>" + pjob.getService() + "</p>");
+				out.println("          <p class='profInfo' id='serviceDescr'>" + pjob.getDescription() + "</p>");
+				out.println("         </div>");
+				out.println("");
+				out.println("      </div>");
+				out.println("");
+				out.println("         <a data-toggle='collapse' data-target='#collapseExampleDong" + i
+						+ "' aria-expanded='false' aria-controls='collapseExample'>");
+				out.println("         <div class='arrow'>");
+				out.println("            <i class='fa fa-chevron-down' aria-hidden='true'></i>");
+				out.println("        </div>");
+				out.println("        </a>");
+				out.println("        <div class='collapse' id='collapseExampleDong" + i + "'>");
+				out.println("          <div class='card card-block'>");
+				out.println("            <table class='table table-user-information'>");
+				out.println("              <tbody>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>Τηλέφωνο:</td>");
+				out.println("                  <td id='tel'>" + pjob.getPhone() + "</td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>Πόλη:</td>");
+				out.println("                  <td id='city'>" + pjob.getCity() + "</td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>Διεύθυνση:</td>");
+				out.println("                  <td id='address'>" + pjob.getAddress() + "</td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>ΤΚ:</td>");
+				out.println("                  <td id='tk'>" + pjob.getPc() + "</td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>e-mail:</td>");
+				out.println("                  <td id='email'><a href='mailto:" + pjob.getWorkemail() + "'>"
+						+ pjob.getWorkemail() + "</a></td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("                <tr>");
+				out.println("                  <td>Ιστοσελίδα:</td>");
+				out.println("                  <td id='url'><a href='" + pjob.getWebpage() + "'>" + pjob.getWebpage()
+						+ "</a></td>");
+				out.println("                </tr>");
+				out.println("");
+				out.println("              </tbody>");
+				out.println("            </table>");
+				out.println("");
+				out.println("          </div>");
+				out.println("        </div>");
+				out.println("      </div>");
+				out.println("</div>");
+				out.println("    </div>");
+				out.println("</div>");
+
+				i++;
+
+			} // for
+
+		} // else
+
 		i = 0;
-		
+
 		out.println("    </div>");
 		out.println("</div>");
-		
-		out.println("    </div>"); //row
-		out.println("</div>"); //container mtb
-		
-		
+
+		out.println("    </div>"); // row
+		out.println("</div>"); // container mtb
+
 		/*********** FOOTER *********/
-		
-		//request.getRequestDispatcher("/footer.jsp").include(request, response);  //mou to bgazei xalia
-		
-		out.println("<!-- *****************************************************************************************************************");
+
+		// request.getRequestDispatcher("/footer.jsp").include(request, response); //mou
+		// to bgazei xalia
+
+		out.println(
+				"<!-- *****************************************************************************************************************");
 		out.println("	 FOOTER");
-		out.println("	 ***************************************************************************************************************** -->");
+		out.println(
+				"	 ***************************************************************************************************************** -->");
 		out.println("	");
 		out.println("	<div id='footerwrap'>");
 		out.println("		<div class='container'>");
@@ -437,8 +426,10 @@ public class ViewResults extends HttpServlet {
 		out.println("					<p>");
 		out.println("						<span class='glyphicon glyphicon glyphicon-earphone'");
 		out.println("							aria-hidden='true'></span> &nbsp 6972809585 <br> <span");
-		out.println("							class='glyphicon glyphicon glyphicon-envelope' aria-hidden='true'></span>");
-		out.println("						&nbsp <a href='mailto:busybees@outlook.com' target='_top'>busybees@outlook.com</a><br>");
+		out.println(
+				"							class='glyphicon glyphicon glyphicon-envelope' aria-hidden='true'></span>");
+		out.println(
+				"						&nbsp <a href='mailto:busybees@outlook.com' target='_top'>busybees@outlook.com</a><br>");
 		out.println("						<span class='glyphicon glyphicon glyphicon-map-marker'");
 		out.println("							aria-hidden='true'></span> &nbsp Ηρούς 4 & Κρέοντος 104 42, Αθήνα");
 		out.println("");
@@ -452,8 +443,7 @@ public class ViewResults extends HttpServlet {
 		out.println("		<! --/container -->");
 		out.println("	</div>");
 		out.println("	<! --/footerwrap -->");
-		
-		
+
 		out.println("    <!-- Bootstrap core JavaScript");
 		out.println("    ================================================== -->");
 		out.println("    <!-- Placed at the end of the document so the pages load faster -->");
@@ -473,7 +463,7 @@ public class ViewResults extends HttpServlet {
 		out.println("  </body>");
 		out.println("</html>");
 		out.println("");
-		
+
 		/*************/
 
 	}

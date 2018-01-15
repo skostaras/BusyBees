@@ -6,7 +6,6 @@ public class Provider {
 	private String password;
 	private String email;
 	private int idprovider;
-//--------------------------------------------------------------------------------------------------------------------	
 	
 	
 	public String getProvidername() {

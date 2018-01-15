@@ -5,21 +5,17 @@ import bees.connection.DB;
 import beesControllers.beesLogIn;
 import beesJava.Customer;
 
-//-----------------------------------------------------------------------
-
 public class CustomerDAO {
 
-	
 	public CustomerDAO() {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public int checkCustomerSignUp(String email) throws Exception {
 		int customeremailflag = 0;
-		
+
 		Connection con = null;
-		DB db = new DB(); // arxikopoio ena antikimeno vasis
+		DB db = new DB();
 		String sqlquery1 = "SELECT * FROM customer WHERE email=?;";
 
 		try {
@@ -39,39 +35,36 @@ public class CustomerDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return customeremailflag;
-		
-		
+
 	}
 
 	// SAVE-----------------------------------------------------------------------------------------------------------------------------------------
 
 	public void saveCustomer(Customer customer) throws Exception {
-									
 
 		Connection con = null;
-		DB dB = new DB(); 
+		DB dB = new DB();
 
 		PreparedStatement stmt2 = null;
 
-		String sqlquery = "INSERT INTO customer (username,password,email) VALUES (?,?,?);"; 
+		String sqlquery = "INSERT INTO customer (username,password,email) VALUES (?,?,?);";
 
 		try {
 			dB.open();
-			con = dB.getConnection(); // ftiaxnei thn syndesh
+			con = dB.getConnection(); 
 
-			stmt2 = con.prepareStatement(sqlquery); // etoimazi to queri na to
-													// steilei sthn vasi
-			stmt2.setString(1, customer.getCustomername()); 
-		
-			stmt2.setString(2, customer.getCustomerPassword()); 
-			
-			stmt2.setString(3, customer.getCustomerEmail()); 
-			
-			stmt2.executeUpdate(); 
-			stmt2.close(); 
+			stmt2 = con.prepareStatement(sqlquery); 
+													
+			stmt2.setString(1, customer.getCustomername());
+
+			stmt2.setString(2, customer.getCustomerPassword());
+
+			stmt2.setString(3, customer.getCustomerEmail());
+
+			stmt2.executeUpdate();
+			stmt2.close();
 			dB.close();
 
 		} catch (Exception e) {
@@ -81,18 +74,15 @@ public class CustomerDAO {
 		} finally {
 
 			try {
-				dB.close(); 
+				dB.close();
 			} catch (Exception e) {
 
 			}
 		}
 	}
 
-
-	// LOGIN CUSTOMER
-	// AUTHENDICATION-----------------------------------------------------------------------
+	// LOGIN CUSTOMER AUTHENΤICATION-------------------------------
 	public Customer checkCustomerLogIn(String password, String email) throws Exception {
-
 
 		Connection con = null;
 
@@ -103,7 +93,6 @@ public class CustomerDAO {
 		try {
 
 			db.open();
-
 			con = db.getConnection();
 
 			PreparedStatement stmt5 = con.prepareStatement(sqlquery);
@@ -119,8 +108,7 @@ public class CustomerDAO {
 				throw new Exception("Wrong username or password");
 			}
 
-			
-			Customer customer = new Customer(rs.getString("username"), rs.getString("password"), rs.getString("email"));			
+			Customer customer = new Customer(rs.getString("username"), rs.getString("password"), rs.getString("email"));
 
 			beesLogIn.loginValue = 2;
 
@@ -146,5 +134,4 @@ public class CustomerDAO {
 
 	}
 
-} // End of authenticateUser
-	// End of class
+} 

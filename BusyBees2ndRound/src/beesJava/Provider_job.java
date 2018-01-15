@@ -57,9 +57,6 @@ public class Provider_job {
 		this.webpage = webpage;
 	}
 
-	
-
-
 	public String getAddress() {
 		return address;
 	}
@@ -84,7 +81,6 @@ public class Provider_job {
 		this.city = city;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
@@ -108,8 +104,6 @@ public class Provider_job {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	
 
 	public String getCategory() {
 		return category;
@@ -154,8 +148,6 @@ public class Provider_job {
 		this.subcategory = subcategory;
 		this.service = service;
 	}
-	
-	
 
 	public Provider_job() {
 		super();
@@ -173,8 +165,9 @@ public class Provider_job {
 		this.category = category;
 	}
 
-	public Provider_job(String firstName, String lastName, String address, String pc, String city, String description, String category, String subcategory, String service) {
-		
+	public Provider_job(String firstName, String lastName, String address, String pc, String city, String description,
+			String category, String subcategory, String service) {
+
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -218,12 +211,5 @@ public class Provider_job {
 		this.subcategory = subcategory;
 		this.service = service;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

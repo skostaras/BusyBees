@@ -1,4 +1,5 @@
 package beesDAO;
+
 import java.sql.*;
 import bees.connection.DB;
 import beesControllers.beesLogIn;
@@ -10,13 +11,11 @@ public class ProviderDAO {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-//---SIGNUP-------------------------------------------------------------	
+	// ---SIGNUP---------------------
 	public int checkProviderSignUp(String email) throws Exception {
 		int provideremailflag = 0;
 		Connection con = null;
-				DB db = new DB(); // arxikopoio ena antikimeno vasis
+		DB db = new DB();
 		String sqlquery = "SELECT * FROM provider WHERE email=?;";
 
 		try {
@@ -25,58 +24,40 @@ public class ProviderDAO {
 			PreparedStatement stmtp = con.prepareStatement(sqlquery);
 			stmtp.setString(1, email);
 			ResultSet rs = stmtp.executeQuery();
-			
-			if (rs.next()){
+
+			if (rs.next()) {
 				provideremailflag = 1;
 			}
 			db.close();
 			stmtp.close();
 			con.close();
 			return provideremailflag;
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return provideremailflag;
 	}
-//SIGNUP-----------------------------------------------------------------------	
-	
-	
 
-	
-	
-	
-	
-// SAVE-----------------------------------------------------------------------------------------------------------------------------------------
-	public void saveProvider(Provider provider) throws Exception {// dimioyrgoyme
-																// mia methodo
-																// User poy
-																// dexete
-																// antikimena
-																// typoy User
-																// apo thn klasi
-																// User.java
+	// SAVE-----------------------------------------------------------------------------------------------------------------------------------------
+	public void saveProvider(Provider provider) throws Exception {
 
 		Connection con = null;
-		DB dB = new DB(); // ginete i sindesi
+		DB dB = new DB();
 
-		PreparedStatement stmtp2 = null;// tha parei san orisma to query poy tha
-										// ektelestei
+		PreparedStatement stmtp2 = null;
 
-		String sqlquery = "INSERT INTO provider (username,password,email) VALUES (?,?,?);"; 
+		String sqlquery = "INSERT INTO provider (username,password,email) VALUES (?,?,?);";
 
 		try {
 			dB.open();
-			con = dB.getConnection(); // ftiaxnei thn syndesh
+			con = dB.getConnection();
 
-			stmtp2 = con.prepareStatement(sqlquery); 
-			stmtp2.setString(1, provider.getProvidername()); 
-
-			stmtp2.setString(2, provider.getProviderPassword()); 
-			
+			stmtp2 = con.prepareStatement(sqlquery);
+			stmtp2.setString(1, provider.getProvidername());
+			stmtp2.setString(2, provider.getProviderPassword());
 			stmtp2.setString(3, provider.getProviderEmail());
-			
 			stmtp2.executeUpdate();
-			stmtp2.close(); 
+			stmtp2.close();
 			dB.close();
 
 		} catch (Exception e) {
@@ -86,70 +67,65 @@ public class ProviderDAO {
 		} finally {
 
 			try {
-				dB.close(); 
+				dB.close();
 			} catch (Exception e) {
 
 			}
 		}
 	}
 
-	
-	
-	//LOGIN Provider AUTHENDICATION-----------------------------------------------------------------------
-	public Provider checkProviderLogIn (String password, String email) throws Exception {
-		
+	// LOGIN Provider AUTHENΤICATION----------------------------------
+	public Provider checkProviderLogIn(String password, String email) throws Exception {
+
 		Connection con = null;
-		
-		String sqlquery= "SELECT * FROM provider WHERE password=? AND email=?;";
-		
+
+		String sqlquery = "SELECT * FROM provider WHERE password=? AND email=?;";
+
 		DB db = new DB();
-		
+
 		try {
-			
+
 			db.open();
-			
 			con = db.getConnection();
-			
+
 			PreparedStatement stmt5 = con.prepareStatement(sqlquery);
-			stmt5.setString( 1, password );
-			stmt5.setString( 2, email );
-			
+			stmt5.setString(1, password);
+			stmt5.setString(2, email);
 			ResultSet rs = stmt5.executeQuery();
-			
-			if(!rs.next()) {
+
+			if (!rs.next()) {
 				rs.close();
 				stmt5.close();
 				db.close();
 				throw new Exception("Wrong username or password");
-			}			
-			
-			
-			Provider provider = new Provider(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getInt("idprovider"));
-			
+			}
+
+			Provider provider = new Provider(rs.getString("username"), rs.getString("password"), rs.getString("email"),
+					rs.getInt("idprovider"));
+
 			beesLogIn.loginValue = 1;
-						
+
 			rs.close();
 			stmt5.close();
-			
-			return provider;			
-			
+
+			return provider;
+
 		} catch (Exception e) {
-			
+
 			throw new Exception(e.getMessage());
-			
+
 		} finally {
-			
+
 			try {
 				db.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		}		
-		
+
+		}
+
 	}
 
 }
-
 
 // End of class
