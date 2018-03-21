@@ -5,11 +5,22 @@
 1) Download and import project
 2) Connect mysql-connector-java to the build path of the project
 3) Run BusyBeesDB1.0.sql 
-4) Update the bees.connection.DB class with your Database's credentials
+4) Update the db.DbConnection class with your Database's credentials
 5) Run on server (Tomcat or other)
 6) It should be live at http://localhost:8080/BusyBees/index.jsp
 
-**Screenshots** from the platform on the below link:
 
-https://onedrive.live.com/?authkey=%21AMs8HfL1UDoR0h0&v=photos&id=A506DB33406D76C1%2159263&cid=A506DB33406D76C1
+![Home Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/home1.jpg)
+
+![Home Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/home2.jpg)
+
+![Home Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/home3.jpg)
+
+![Provider's Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/providerentry.jpg)
+
+![Provider's Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/providerpage.jpg)
+
+![Results Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/results1.jpg)
+
+![Results Page](https://github.com/skostaras/busybees/blob/master/BusyBees2ndRound/Screenshots/results2.jpg)
 
