@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="beesControllers.beesLogIn"%>
+<%@ page import="controllers.Login"%>
 
 
 <!DOCTYPE html>
@@ -35,10 +35,10 @@
 
 	<!-- Fixed navbar -->
 
-	<%@ page import="beesControllers.beesLogIn"%>
+	<%@ page import="controllers.Login"%>
 
 
-	<% switch(beesLogIn.loginValue) {
+	<% switch(Login.loginValue) {
 		case 0: 
 		System.out.println("loged out"); %>
 	<%@ include file="navbar_login.jsp"%>

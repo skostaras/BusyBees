@@ -36,10 +36,10 @@
 
 	<!-- Fixed navbar -->
 
-	<%@ page import="beesControllers.beesLogIn"%>
+	<%@ page import="controllers.Login"%>
 
 
-	<% switch(beesLogIn.loginValue) {
+	<% switch(Login.loginValue) {
 		case 0: 
 		System.out.println("loged out"); %>
 	<%@ include file="navbar_login.jsp"%>
@@ -84,7 +84,7 @@
 
 			<div class="col-lg-9">
 				<h4 style="color: #ffb726">
-					Καλώς ήρθες <i> <%@ page import="beesJava.Provider"%>
+					Καλώς ήρθες <i> <%@ page import="model.Provider"%>
 
 						<% Provider provider = (Provider)session.getAttribute("provider-object");	%>
 

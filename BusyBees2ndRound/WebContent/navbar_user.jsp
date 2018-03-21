@@ -26,7 +26,7 @@
 					<li class="dropdown"><a href="#"
 						class="dropdown-toggle glyphicon glyphicon-user"
 						data-toggle="dropdown"> <%-- NEW --%> <%@ page
-								import="beesJava.Customer"%> <% Customer customer = (Customer)session.getAttribute("customer-object");	%>
+								import="model.Customer"%> <% Customer customer = (Customer)session.getAttribute("customer-object");	%>
 
 
 							<%=customer.getCustomername().toUpperCase() %> <%-- ************** --%>

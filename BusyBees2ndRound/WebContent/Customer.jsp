@@ -35,10 +35,10 @@
 
     <!-- Fixed navbar -->
 
-     <%@ page import="beesControllers.beesLogIn" %> 
+     <%@ page import="controllers.Login" %> 
 	
 	
-			<% switch(beesLogIn.loginValue) {
+			<% switch(Login.loginValue) {
 		case 0: 
 		System.out.println("logout out"); %>
 			<%@ include  file="navbar_login.jsp"%>
@@ -88,7 +88,7 @@
 	 			
                    <%-- NEW --%>
              
-                <%@ page import="beesJava.Customer" %> 
+                <%@ page import="model.Customer" %> 
                         
             
 				<% Customer customer = (Customer)session.getAttribute("customer-object");	%>

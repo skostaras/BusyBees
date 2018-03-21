@@ -26,7 +26,7 @@
 					<li class="dropdown"><a href="#"
 						class="dropdown-toggle glyphicon glyphicon-user"
 						data-toggle="dropdown"> <%-- NEW --%> <%@ page
-								import="beesJava.Provider"%> <% Provider provider = (Provider)session.getAttribute("provider-object");	
+								import="model.Provider"%> <% Provider provider = (Provider)session.getAttribute("provider-object");	
 				String useraname=null;
 				if(provider!=null){
 					useraname=provider.getProvidername().toUpperCase();
